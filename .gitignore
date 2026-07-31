@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+data/documents/*
+!data/documents/.gitkeep
+vectorstore/*
+!vectorstore/.gitkeep
