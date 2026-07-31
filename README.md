@@ -11,7 +11,7 @@ A resume-ready Retrieval-Augmented Generation project that lets users upload doc
 - Ask questions through a built-in browser UI or FastAPI endpoint.
 - Return source snippets with each answer for explainability.
 - Optional Streamlit chat UI.
-- Dockerfile included for deployment.
+- Dockerfile included for local container testing.
 
 ## Architecture
 
@@ -47,7 +47,6 @@ document-assistant/
 ├── data/documents/
 ├── vectorstore/
 ├── streamlit_app.py
-├── Dockerfile
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -75,7 +74,7 @@ MAX_OUTPUT_TOKENS=700
 
 You can still use direct OpenAI by setting `AI_PROVIDER=openai` and adding `OPENAI_API_KEY`, but this project now defaults to OpenRouter because it avoids depending on your exhausted OpenAI quota.
 
-If you are only testing without a working provider key, set `USE_LOCAL_FALLBACK=true`. For an online portfolio deployment, keep it `false` so configuration problems fail clearly.
+If you are only testing without a working provider key, set `USE_LOCAL_FALLBACK=true`. For a future online portfolio deployment, keep it `false` so configuration problems fail clearly.
 
 ## Run the API
 
@@ -129,14 +128,6 @@ docker build -t document-assistant .
 docker run --env-file .env -p 8000:8000 document-assistant
 ```
 
-## Deployment
-
-This project includes deployment files for Render and Vercel.
-
-See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for Vercel.
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for Render.
-
 ## Resume Bullets
 
 - Built a Retrieval-Augmented Generation based Document Q&A Assistant using LangChain, FAISS, FastAPI, and OpenAI APIs for semantic search over user-provided documents.
@@ -147,5 +138,6 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for Render.
 
 - Add RAGAS evaluation for faithfulness, answer relevancy, and context precision.
 - Add authentication and per-user vector indexes.
-- Add cloud deployment with AWS ECS, Azure App Service, or Render.
+- Add cloud deployment using Hugging Face Spaces, Render, Railway, or a VM-based provider.
+- Add persistent storage or a managed vector database for deployed environments.
 - Add conversation memory and multi-document filtering.
